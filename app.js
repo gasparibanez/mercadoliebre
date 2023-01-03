@@ -1,36 +1,23 @@
-import * as url from 'url';
-import path from 'path';
-import express from 'express';
-import dotenv from 'dotenv';
-
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-
-dotenv.config(__dirname)
-const PORT = process.env.PORT || 8000 ;
+const express = require('express');
+const path = require('path');
 
 const app = express();
+
 app.use(express.static('public'));
 
-
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './views/home.html'));
-})
+    res.sendFile(path.join(__dirname, '/views/home.html'));
+});
 
-app.route('/register')
-    .get((req, res) => {
-        res.sendFile(path.resolve(__dirname, './views/register.html'));
-    })
-    .post((req, res) => {
-        res.sendFile(path.resolve(__dirname, './views/register.html'));
-    })
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/register.html'));
+});
 
-app.route('/login')
-    .get((req, res) => {
-        res.sendFile(path.resolve(__dirname, './views/login.html'));
-    })
-    .post((req, res) => {
-        res.sendFile(path.resolve(__dirname, './views/login.html'));
-    })
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/login.html'));
+});
 
-
-app.listen(PORT, () => {console.log(`Server listening on port ${PORT}`)})
+const port = process.env.PORT || 8081;
+app.listen(port, () => {
+    console.log('Servidor iniciado en http://localhost:' + port);
+});

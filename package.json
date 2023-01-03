@@ -2,7 +2,6 @@
   "name": "mercadoliebre",
   "version": "1.0.0",
   "description": "TP para el curso Full Stack - Digital House\r Duplicado de la pagina de ML .",
-  "type": "module",
   "main": "app.js",
   "scripts": {
     "test": "nodemon app.js",
